@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  neo4j:
+    image: neo4j:5.14.0
+    container_name: local_neo4j
+    environment:
+      NEO4J_AUTH: neo4j/password  # Change this to set your desired username and password
+      APOC_VERSION: 4.3.0.3
+      NEO4J_PLUGINS: '["apoc"]'
+    ports:
+      - "7474:7474"  # HTTP
+      - "7687:7687"  # Bolt
+    volumes:
+      -  /home/pj/neo4j:/data
+volumes:
+  neo4j_data:
