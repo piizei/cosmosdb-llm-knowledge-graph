@@ -25,10 +25,11 @@ def map_to_base_node(node: Any) -> Node:
     properties = props_to_dict(node["properties"]) if "properties" in node else {}
     # Add name property for better Cypher statement generation according to the langchain docs. Not sure if relevant for cosmos/gremlin.
     properties["name"] = node.id
-    type = node["type"].capitalize() if "type" in node else "Node"
-    return Node(
+    type = node.type.capitalize()
+    nodex = Node(
         id=node.id, type=type, properties=properties
     )
+    return nodex
     
 
 def map_to_base_relationship(rels: [Any], nodes: [Node]) -> Relationship:
@@ -36,7 +37,7 @@ def map_to_base_relationship(rels: [Any], nodes: [Node]) -> Relationship:
     mapped_rels = []
     for rel in rels:
         s = next((n for n in nodes if n.id == rel.source), None)
-        source = s if s else map_to_base_node(rel["source"])
+        source = s if s else map_to_base_node(rel.source)
         t = next((n for n in nodes if n.id == rel.target), None)
         target = t if t else map_to_base_node(rel.target)
         properties = props_to_dict(rel["properties"]) if "properties" in rel else {}
