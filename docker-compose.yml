@@ -11,6 +11,6 @@ services:
       - "7474:7474"  # HTTP
       - "7687:7687"  # Bolt
     volumes:
-      -  /home/pj/neo4j:/data
+      -  /Users/pj/neo4j:/data
 volumes:
   neo4j_data:

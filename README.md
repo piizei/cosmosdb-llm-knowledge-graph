@@ -14,3 +14,7 @@ You need to copy `.env.example` file to `.env` and fill the variables with your 
 
 After that, run notebook 1 to create the knowledge graph (stored in file) and then run notebook 2 or 3 to use it with either Neo4j or CosmosDB.
 
+## Neo4j
+
+If you run the neo4j database with docker compose, edit the `docker-compose.yml` file for a volume mount before starting it.
+

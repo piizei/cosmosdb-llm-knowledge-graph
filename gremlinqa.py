@@ -1,6 +1,5 @@
 """Question answering over a graph."""
 from __future__ import annotations
-import re
 
 from typing import Any, Dict, List, Optional
 
@@ -19,6 +18,7 @@ from langchain.chains.llm import LLMChain
 from GremlinGraph import GremlinGraph
 
 INTERMEDIATE_STEPS_KEY = "intermediate_steps"
+
 
 def extract_gremlin(text: str) -> str:
     """Extract Gremlin code from a text.
@@ -75,12 +75,12 @@ class GremlinQAChain(Chain):
 
     @classmethod
     def from_llm(
-        cls,
-        llm: BaseLanguageModel,
-        *,
-        qa_prompt: BasePromptTemplate = CYPHER_QA_PROMPT,
-        gremlin_prompt: BasePromptTemplate = GREMLIN_GENERATION_PROMPT,
-        **kwargs: Any,
+            cls,
+            llm: BaseLanguageModel,
+            *,
+            qa_prompt: BasePromptTemplate = CYPHER_QA_PROMPT,
+            gremlin_prompt: BasePromptTemplate = GREMLIN_GENERATION_PROMPT,
+            **kwargs: Any,
     ) -> GremlinQAChain:
         """Initialize from LLM."""
         qa_chain = LLMChain(llm=llm, prompt=qa_prompt)
@@ -93,35 +93,35 @@ class GremlinQAChain(Chain):
         )
 
     def _call(
-        self,
-        inputs: Dict[str, Any],
-        run_manager: Optional[CallbackManagerForChainRun] = None,
+            self,
+            inputs: Dict[str, Any],
+            run_manager: Optional[CallbackManagerForChainRun] = None,
     ) -> Dict[str, str]:
         """Generate gremlin statement, use it to look up in db and answer question."""
         _run_manager = run_manager or CallbackManagerForChainRun.get_noop_manager()
         callbacks = _run_manager.get_child()
         question = inputs[self.input_key]
-        
+
         intermediate_steps: List = []
 
         generated_gremlin = self.gremlin_generation_chain.invoke(
             {"question": question, "schema": self.graph.get_schema}, callbacks=callbacks
         )
-        
+
         generated_gremlin = extract_gremlin(generated_gremlin["text"])
 
         _run_manager.on_text("Generated gremlin:", end="\n", verbose=self.verbose)
         _run_manager.on_text(
             generated_gremlin, color="green", end="\n", verbose=self.verbose
         )
-        
+
         intermediate_steps.append({"query": generated_gremlin})
-        
+
         if generated_gremlin:
             context = self.graph.query(generated_gremlin)[: self.top_k]
         else:
             context = []
-                
+
         if self.return_direct:
             final_result = context
         else:
