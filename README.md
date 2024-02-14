@@ -1,5 +1,5 @@
 # llm-knowledge-graph
-Example how to construct knowledge graph to Neo4j & CosmosDB  with LLM and use it with Langchain
+Example how to construct knowledge graph from a document with LLM and use it with Langchain as part of your RAG
 
 3 Notebooks:
 
