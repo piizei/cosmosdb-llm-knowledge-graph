@@ -198,7 +198,7 @@ class GremlinQAChain(Chain):
                     parse_exception = str(e)
                     self.log_invalid_query(_run_manager, fixed_gremlin, parse_exception)
 
-        raise ValueError("The generated SPARQL query is invalid.")
+        raise ValueError("The generated Gremlin query is invalid.")
 
     def log_invalid_query(
         self,
