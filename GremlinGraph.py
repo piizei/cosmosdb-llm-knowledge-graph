@@ -82,12 +82,15 @@ class GremlinGraph(GraphStore):
         """
         vertex_schema = self.client.submit("g.V().label().dedup()").all().result()
         edge_schema = self.client.submit("g.E().label().dedup()").all().result()        
+        vertex_properties = self.client.submit("g.V().group().by(label).by(properties().label(). dedup(). fold())"
+                                               ).all().result()[0]
         self.schema = "\n".join(
             [
-                "Node labes are the following:",
+                "Vertex labels are the following:",
                 ",".join(vertex_schema),
                 "Edge labes are the following:",
                 ",".join(edge_schema),
+                f"Vertexes have following properties:\n{vertex_properties}"                
             ]
         )
 
