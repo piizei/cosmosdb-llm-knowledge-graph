@@ -1,20 +1,46 @@
-# llm-knowledge-graph
-Example how to construct knowledge graph from a document with LLM and use it with Langchain as part of your RAG
+# 🌟 LLM Knowledge Graph 🌟
+> *Transform documents into powerful knowledge graphs with LLMs and supercharge your RAG systems!*
 
-3 Notebooks:
+![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
+![CosmosDB](https://img.shields.io/badge/CosmosDB-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
+![Neo4j](https://img.shields.io/badge/Neo4j-008CC1?style=for-the-badge&logo=neo4j&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 
-1. [Construct knowledge graph with LLM](./knowledgegraph.ipynb)
-2. [Use Graph with Neo4j](./knowledgegraph-neo4j.ipynb)
-3. [Use Graph with Azure CosmosDB](./knowledgegraph-cosmosdb.ipynb)
+## 🎉 One Year Later Update! 🎉
 
+✨ **SOON!** Upcoming support for [Azure PostgreSQL with AGE graph extension](https://techcommunity.microsoft.com/blog/adforpostgresql/introducing-support-for-graph-data-in-azure-database-for-postgresql-preview/4275628) underway!
 
-# Instructions
+🛠️ Simplified usage thanks to advances in **LangChain** 
 
-You need to copy `.env.example` file to `.env` and fill the variables with your own values.
+💪 Performance BOOST - Now using **o3-mini** for SUPERIOR performance and at a lower cost!
 
-After that, run notebook 1 to create the knowledge graph (stored in file) and then run notebook 2 or 3 to use it with either Neo4j or CosmosDB.
+---
 
-## Neo4j
+## 📓 Interactive Notebooks
 
-If you run the neo4j database with docker compose, edit the `docker-compose.yml` file for a volume mount before starting it.
+Explore our step-by-step journey through knowledge graphs:
+
+1. 🔍 [Construct knowledge graph with LLM](./knowledgegraph.ipynb) - *From text to structured knowledge*
+2. 🔵 [Use Graph with Neo4j](./knowledgegraph-neo4j.ipynb) - *Leverage the power of graph databases*
+3. 🌌 [Use Graph with Azure CosmosDB](./knowledgegraph-cosmosdb.ipynb) - *Cloud-scale graph operations*
+
+---
+
+## 🚀 Getting Started
+
+### Quick Setup:
+1. Copy `.env.example` file to `.env`
+2. Fill in your personal API keys and connection strings
+3. Run the notebooks in sequence to experience the magic!
+
+### 🔧 Neo4j Setup
+
+Running Neo4j with Docker? Don't forget to:
+- Edit the `docker-compose.yml` file to add a volume mount before starting
+- Watch your knowledge come alive in the graph visualization!
+
+---
+
+*Happy graphing! 📊*
+
 
