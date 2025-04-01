@@ -22,3 +22,5 @@ psycopg2
 # Visualizing graph without db
 networkx
 matplotlib
+# Reading docs with Azure Document Intelligence
+azure-ai-documentintelligence
